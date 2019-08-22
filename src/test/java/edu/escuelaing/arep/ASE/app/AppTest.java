@@ -1,38 +1,47 @@
 package edu.escuelaing.arep.ASE.app;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+import org.junit.Test;
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+public class AppTest{
+	@Test
+	public void deberianCalcularseBienLaMediayDesviacionDeLaPrimeraColumna() throws IOException {
+		LinkedList list1 = new LinkedList();
+    	LinkedList list2 = new LinkedList();
+    	BufferedReader br = new BufferedReader(new FileReader("primerTest.txt"));
+        String s = null;
+        while((s = br.readLine()) != null) {
+        	double numero = Double.parseDouble(s);
+        	list1.insert(numero);
+        	list2.insert(numero);
+		}
+		double media = App.media(list1);
+		double desviacion = App.desviacion(list2,media);
+		assertEquals(String.format( "%.2f", media),"550.60");
+        assertEquals(String.format( "%.2f", desviacion),"572.03");
+        br.close();
+	}
+	
+	@Test
+	public void deberianCalcularseBienLaMediayDesviacionDeLaSegundaColumna() throws IOException {
+		LinkedList list1 = new LinkedList();
+    	LinkedList list2 = new LinkedList();
+    	BufferedReader br = new BufferedReader(new FileReader("segundoTest.txt"));
+        String s = null;
+        while((s = br.readLine()) != null) {
+        	double numero = Double.parseDouble(s);
+        	list1.insert(numero);
+        	list2.insert(numero);
+		}
+		double media = App.media(list1);
+		double desviacion = App.desviacion(list2,media);
+        assertEquals(String.format( "%.2f", media),"60.32");
+        assertEquals(String.format( "%.2f", desviacion),"62.26");
+        br.close();
+	}
 }

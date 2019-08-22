@@ -5,11 +5,13 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Hello world!
+ * Esta clase ejecuta todo el programa, calculando la media y la desviacion estandar.
+ * 
+ * @author Natalia Palacios
  *
  */
-public class App 
-{
+public class App {
+	
     public static void main( String[] args ) throws NumberFormatException, IOException
     {
     	LinkedList list1 = new LinkedList();
@@ -24,9 +26,14 @@ public class App
 		double media = media(list1);
 		double desviacion = desviacion(list2,media);
 		System.out.println("Media: " + String.format("%.1f", media));
-		System.out.println("Desviación: " + String.format("%.6f",desviacion));
+		System.out.println("Desviacion: " + String.format("%.6f",desviacion));
 	}
     
+    /**
+     * Calcula la media de una lista de numeros.
+     * @param list Lista donde estan los numeros para calcular la media.
+     * @return La media de la lista.
+     */
     public static double media(LinkedList list) {
     	int size = list.tamano;
     	double suma = 0; double promedio;
@@ -37,6 +44,12 @@ public class App
     	return promedio;
     }
     
+    /**
+     * Calcula la desviacion estandar de una lista de numeros.
+     * @param list Lista donde estan los numeros para calcular la desviacion.
+     * @param med Media hallada anteriormente.
+     * @return Desviacion estandar de la lista de numeros.
+     */
     public static double desviacion(LinkedList list, double med) {
     	double sumatoria = 0;
     	int size = list.tamano;
